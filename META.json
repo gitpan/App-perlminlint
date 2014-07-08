@@ -42,7 +42,7 @@
    "provides" : {
       "App::perlminlint" : {
          "file" : "lib/App/perlminlint.pm",
-         "version" : "0.1_2"
+         "version" : "0.20"
       },
       "App::perlminlint::Object" : {
          "file" : "lib/App/perlminlint/Object.pm"
@@ -63,11 +63,11 @@
          "file" : "lib/App/perlminlint/Plugin/LintT.pm"
       }
    },
-   "release_status" : "testing",
+   "release_status" : "stable",
    "resources" : {
       "license" : [
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.1_2"
+   "version" : "0.20"
 }

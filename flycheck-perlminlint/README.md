@@ -1,10 +1,12 @@
-perl-minlint-mode
+Flycheck support
 ====================
 
-To use `perl-minlint-mode`, please load `subdirs.el` in this directory.
-It will setup `load-path`, `cperl-mode-hook` and `autoload`.
+To use `perlminlint` from 
+[Flycheck](http://flycheck.readthedocs.org/en/latest/index.html),
+please load `subdirs.el` in this directory.
+It will setup `cperl-mode-hook`.
 
-For now, recommended way to install perl-minlint-mode is
+For now, recommended way to install Flycheck support is
 
 ```sh
 #
@@ -18,11 +20,11 @@ ln -s app-perlminlint/script/perlminlint .
 # This assumes you use ~/.emacs.d/init.el (rather than ~/.emacs)
 #
 cd ~/.emacs.d
-ln -s ../app-perlminlint/elisp perlminlint
+ln -s ../app-perlminlint/flycheck-perlminlint .
 ```
 
-Then you can setup perl-minlint-mode by adding
-`(load "~/.emacs.d/perlminlint/subdirs")`
+Then you can setup Flycheck support by adding
+`(load "~/.emacs.d/flycheck-perlminlint/subdirs")`
 to your `~/.emacs.d/init.el`.
 
 Alternatively, you can load **all** `subdirs.el` under `~/.emacs.d`
@@ -47,27 +49,4 @@ by adding following snippet in init.el:
   (funcall load-all-subdirs
            (or (and load-file-name (file-name-directory load-file-name))
                default-directory)))
-```
-
-Tramp support
---------------------
-
-perl-minlint-mode supports
-[tramp](http://www.emacswiki.org/emacs/TrampMode).
-To use perl-minlint-mode via tramp, you first need to install
-perlminlint script on your remote machine, like above.
-
-If perl-minlint-mode fails to find your `perlminlint` script 
-even after successful installation, you may need to set 
-`tramp-remote-path` properly
-(but this doesn't work for me, honestly :-<).
-Alternatively, you can explicitly specify host-specific path for 
-perlminlint executable via `perl-minlint-script-for-tramp-host-alist`
-like following:
-
-```lisp
-(eval-after-load "perl-minlint"
-  '(progn
-     (add-to-list 'perl-minlint-script-for-tramp-host-alist
-		  '("myserver" . "~/bin/perlminlint"))))
 ```
