@@ -1,38 +1,29 @@
 Flycheck support
 ====================
 
-To use `perlminlint` from 
-[Flycheck](http://flycheck.readthedocs.org/en/latest/index.html),
-please load `subdirs.el` in this directory.
-It will setup `cperl-mode-hook`.
+After you successfully installed perlminlint, you can also use it
+from [Flycheck](http://flycheck.readthedocs.org/en/latest/index.html)
+in cperl-mode. 
 
-For now, recommended way to install Flycheck support is
+Note: This flycheck support restricts 
+the check events only to `save`, because without having real (saved) file
+many perl checking doesn't work properly.
 
-```sh
-#
-# This assumes you have ~/bin in your $PATH
-#
-cd ~/bin
-git clone https://github.com/hkoba/app-perlminlint.git
-ln -s app-perlminlint/script/perlminlint .
 
-#
-# This assumes you use ~/.emacs.d/init.el (rather than ~/.emacs)
-#
-cd ~/.emacs.d
-ln -s ../app-perlminlint/flycheck-perlminlint .
-```
+Installation
+--------------------
 
-Then you can setup Flycheck support by adding
-`(load "~/.emacs.d/flycheck-perlminlint/subdirs")`
-to your `~/.emacs.d/init.el`.
+To use perlminlint from flycheck, you have 2 options:
 
-Alternatively, you can load **all** `subdirs.el` under `~/.emacs.d`
-by adding following snippet in init.el:
+* Just copy contents of [subdirs.el] into your `~/.emacs.d/init.el`
+* Alternatively, you can put a symlink of this `flycheck-perlminlint`
+directory under `~/.emacs.d` and
+load [subdirs.el] by adding following snippet, which will load all
+`~/.emacs.d/*/subdirs.el`, in init.el:
 
 ```lisp
 ;;
-;; Load all "*/subdirs.el" under this-dir.
+;; Load all "*/subdirs.el" under this-dir. Put this in ~/.emacs.d/init.el
 ;;
 (let ((load-all-subdirs
        (lambda (this-dir)
@@ -50,3 +41,5 @@ by adding following snippet in init.el:
            (or (and load-file-name (file-name-directory load-file-name))
                default-directory)))
 ```
+
+[subdirs.el]: subdirs.el
